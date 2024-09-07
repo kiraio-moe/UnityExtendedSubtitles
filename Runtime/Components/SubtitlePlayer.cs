@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Kiraio.UniXSub.Parser;
 using TMPro;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Kiraio.UniXSub.Components
 {
@@ -78,9 +81,7 @@ namespace Kiraio.UniXSub.Components
         public void PlaySubtitles()
         {
             if (playCoroutine != null)
-            {
                 StopCoroutine(playCoroutine);
-            }
             playCoroutine = StartCoroutine(PlaySubtitlesCoroutine());
         }
 
@@ -89,14 +90,12 @@ namespace Kiraio.UniXSub.Components
             while (currentSubtitleIndex < subtitles.Count)
             {
                 Subtitle subtitle = subtitles[currentSubtitleIndex];
-                SubtitleText.text = subtitle.Text;
-
+                UpdateSubtitleText(subtitle);
                 yield return new WaitForSeconds((float)subtitle.Duration.TotalSeconds);
-
                 currentSubtitleIndex++;
             }
 
-            SubtitleText.text = string.Empty;
+            StopSubtitles();
         }
 
         public void StopSubtitles()
@@ -104,8 +103,23 @@ namespace Kiraio.UniXSub.Components
             if (playCoroutine != null)
             {
                 StopCoroutine(playCoroutine);
-                SubtitleText.text = string.Empty;
+                currentSubtitleIndex = 0;
             }
+        }
+
+        /// <summary>
+        /// Update TextMeshPro text.
+        /// </summary>
+        /// <returns></returns>
+        public Subtitle UpdateSubtitleText(Subtitle subtitle)
+        {
+            SubtitleText.text = subtitle.Text;
+            SubtitleText.margin = subtitle.Position;
+#if UNITY_EDITOR
+            SubtitleText.ForceMeshUpdate();
+            EditorUtility.SetDirty(SubtitleText);
+#endif
+            return subtitle;
         }
     }
 }

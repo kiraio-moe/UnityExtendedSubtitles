@@ -1,7 +1,29 @@
 1
-00:00:01,000 --> 00:00:04,000
-Hello, world!
+00:00:00,500 --> 00:00:05,000
+{b}<i>In the darkness,</i>{/b} the light awaits.
 
 2
-00:00:05,000 --> 00:00:07,000
-Welcome to Unity!
+00:00:06,000 --> 00:00:10,000
+{font color="#ff00ff" face=""}A {u}digital{/font} dream, unfolding...
+
+3
+00:00:11,000 --> 00:00:15,000
+X1:-200 X2:200 Y1:-350 Y2:750
+{b}A glitch in the system,{/b} a spark in the void.
+
+4
+00:00:16,000 --> 00:00:20,000
+<font color="#00ff00">{i}Do you feel the pulse?</i></font>
+
+5
+00:00:21,000 --> 00:00:24,000
+{b}The world resets,{/b} {i}anew again{/i}.
+
+6
+00:00:25,000 --> 00:00:30,000
+X1:100 X2:500 Y1:-500 Y2:500
+{font color="#ffff00"}Echoes of a distant past...{/font}
+
+7
+00:00:31,000 --> 00:00:35,000
+<font color="#ff4500"><b>The future awaits.</b></font>
